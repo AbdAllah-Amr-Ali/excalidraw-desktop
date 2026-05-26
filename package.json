@@ -1,0 +1,53 @@
+{
+  "name": "excalidraw-desktop",
+  "version": "1.0.0",
+  "description": "Excalidraw - Virtual whiteboard for sketching hand-drawn like diagrams",
+  "main": "main.js",
+  "author": "Excalidraw Community",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "png-to-ico": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "build": {
+    "appId": "com.excalidraw.desktop",
+    "productName": "Excalidraw",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "server.js",
+      "excalidraw-build/**/*",
+      "assets/**/*",
+      "libraries/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Excalidraw",
+      "uninstallDisplayName": "Excalidraw"
+    }
+  }
+}
